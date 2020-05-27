@@ -1,0 +1,6 @@
+runs
+model
+test_data.txt
+train_data.txt
+venv
+.idea
