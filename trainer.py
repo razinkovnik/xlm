@@ -15,6 +15,7 @@ def train(model: PreTrainedModel, tokenizer: PreTrainedTokenizer, train_batch_si
     args = TrainingArguments()
     args.per_gpu_train_batch_size = train_batch_size
     args.per_gpu_eval_batch_size = eval_batch_size
+    args.per_device_train_batch_size = train_batch_size
 
     trainer = Trainer(
         model=model,
