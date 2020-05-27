@@ -12,6 +12,8 @@ class TrainingArguments:
     do_train = True
     do_eval = False
     evaluate_during_training = True
+    per_gpu_train_batch_size = 8
+    per_gpu_eval_batch_size = 8
     gradient_accumulation_steps = 1
     learning_rate = 5e-5
     weight_decay = 0.0
@@ -35,10 +37,6 @@ class TrainingArguments:
     is_tpu_available = False
     device = "cuda"
     n_gpu = 1
-
-    def __init__(self, per_gpu_train_batch_size=2, per_gpu_eval_batch_size=4):
-        self.per_gpu_train_batch_size = per_gpu_train_batch_size
-        self.per_gpu_eval_batch_size = per_gpu_eval_batch_size
 
     @property
     def train_batch_size(self) -> int:

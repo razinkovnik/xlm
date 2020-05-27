@@ -12,10 +12,13 @@ def train(model: PreTrainedModel, tokenizer: PreTrainedTokenizer, train_batch_si
     data_collator = DataCollatorForLanguageModeling(
         tokenizer=tokenizer, mlm=mlm, mlm_probability=0.15
     )
+    args = TrainingArguments()
+    args.per_gpu_train_batch_size = train_batch_size
+    args.per_gpu_eval_batch_size = eval_batch_size
 
     trainer = Trainer(
         model=model,
-        args=TrainingArguments(train_batch_size, eval_batch_size),
+        args=args,
         data_collator=data_collator,
         train_dataset=dataset.get_train_dataset(tokenizer),
         eval_dataset=dataset.get_eval_dataset(tokenizer),
