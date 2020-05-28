@@ -16,13 +16,14 @@ def train(model: PreTrainedModel, tokenizer: PreTrainedTokenizer, train_batch_si
     args.per_gpu_train_batch_size = train_batch_size
     args.per_gpu_eval_batch_size = eval_batch_size
     args.per_device_train_batch_size = train_batch_size
+    train_dataset, eval_dataset = dataset.get_dataset(tokenizer)
 
     trainer = Trainer(
         model=model,
         args=args,
         data_collator=data_collator,
-        train_dataset=dataset.get_train_dataset(tokenizer),
-        eval_dataset=dataset.get_eval_dataset(tokenizer),
+        train_dataset=train_dataset,
+        eval_dataset=eval_dataset,
         prediction_loss_only=True,
     )
 
