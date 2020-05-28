@@ -26,7 +26,7 @@ class TrainingArguments:
     logging_dir = None
     logging_first_step = None
     logging_steps = 500
-    save_steps = 5000
+    save_steps = 500
     save_total_limit = None
     no_cuda = False
     seed = 42
